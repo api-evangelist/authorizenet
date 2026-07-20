@@ -1,0 +1,37 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.authorize.net/api/reference/index.html and https://github.com/AuthorizeNet/oauth-sample-app
+summary:
+  types: [apiKey, oauth2]
+  api_key_in: [body]
+  oauth2_flows: [authorizationCode]
+schemes:
+- name: merchantAuthentication
+  type: apiKey
+  in: body
+  description: >-
+    Primary authentication for the transaction gateway. Every request carries a
+    merchantAuthentication element with the merchant API Login ID (name) and Transaction
+    Key. Sandbox and production use distinct credentials.
+  fields:
+    - name          # API Login ID
+    - transactionKey  # Transaction Key
+  docs: https://developer.authorize.net/api/reference/index.html#authentication
+- name: signatureKey
+  type: apiKey
+  in: body-hash
+  description: >-
+    A Signature Key (HMAC-SHA512) is used to verify transaction hashes and to sign/verify
+    webhook payloads (X-ANET-Signature header). Configured in the Merchant Interface.
+- name: oauth2
+  type: oauth2
+  flow: authorizationCode
+  description: >-
+    OAuth 2.0 is available for partner and Accept integrations, allowing a merchant to
+    grant a partner application access without sharing raw API credentials. Demonstrated
+    in the official oauth-sample-app.
+  sample: https://github.com/AuthorizeNet/oauth-sample-app
+notes: >-
+  The gateway is credential-based (API Login ID + Transaction Key) rather than OAuth-scope
+  based for most integrations; there is no public OAuth scopes reference, so no scopes/
+  artifact is emitted. OAuth 2.0 covers partner delegation.
