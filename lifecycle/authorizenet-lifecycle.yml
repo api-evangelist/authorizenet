@@ -1,0 +1,39 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.authorize.net/api/reference/index.html and https://status.authorize.net/
+versioning:
+  scheme: uri-path
+  gateway_version: v1
+  gateway_endpoint: https://api.authorize.net/xml/v1/request.api
+  rest_version: v1
+  rest_endpoint: https://api.authorize.net/rest/v1/
+  sandbox_gateway_endpoint: https://apitest.authorize.net/xml/v1/request.api
+  notes: >-
+    Single long-lived v1 gateway (XML and JSON share the same /xml/v1 endpoint) plus a
+    REST v1 surface for webhooks and notifications. New features are added additively;
+    no dated version cutovers are published.
+upgrade_guide: https://developer.authorize.net/api/upgrade_guide.html
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No formal RFC 8594 Sunset/Deprecation header policy was found. Legacy name/value
+    APIs (AIM/SIM) are documented as superseded by the current API but no dated sunset
+    schedule is published.
+status_page:
+  url: https://status.authorize.net/
+  provider: Atlassian Statuspage
+  components:
+  - Authorize.net API
+  - Accept Suite
+  - AIM / SIM
+  - Boarding API
+  - OAuth
+  - Webhooks
+  - Sandbox / Testing Environment
+  - Merchant Interface
+  - Recurring Billing
+  - Customer Information Manager
+  - Advanced Fraud Detection Suite
+  - Settlement / Batching
+deprecated_operations: []

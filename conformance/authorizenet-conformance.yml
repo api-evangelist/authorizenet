@@ -1,0 +1,33 @@
+generated: '2026-07-18'
+method: derived
+source: derived from Authorize.net developer documentation and payment-industry requirements
+standards:
+- id: pci-dss
+  conforms: true
+  evidence: >-
+    Authorize.net is a payment gateway (Visa Acceptance Solutions) and operates as a
+    PCI DSS compliant service provider; Accept.js / Accept Hosted tokenization is offered
+    to reduce merchant PCI scope. No standalone published compliance page was reachable at
+    probe time, so this is asserted as an industry requirement for a card acquirer rather
+    than from a cited certification document.
+- id: oauth2
+  conforms: true
+  evidence: OAuth 2.0 authorization-code flow documented and demonstrated in official oauth-sample-app
+- id: webhooks-hmac-signing
+  conforms: true
+  evidence: Webhook payloads signed via X-ANET-Signature (HMAC-SHA512) for receiver verification
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the Authorize.net messages/resultCode envelope, not application/problem+json
+- id: fapi
+  conforms: false
+- id: fhir-r4
+  conforms: false
+- id: scim
+  conforms: false
+- id: odata
+  conforms: false
+note: >-
+  method: derived. PCI DSS is treated as a derived industry conformance assertion; no
+  Compliance canonical pointer is emitted because no published compliance/certification
+  page was verified.

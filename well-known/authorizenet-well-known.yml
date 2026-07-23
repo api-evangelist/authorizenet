@@ -1,0 +1,31 @@
+generated: '2026-07-18'
+method: searched
+source: live probes on 2026-07-18
+note: >-
+  No /.well-known/ discovery documents were served. api.authorize.net returns 404 for
+  all probed paths; developer.authorize.net and www.authorize.net return 403 (Akamai
+  edge blocks non-browser requests to /.well-known/*), with no evidence of a published
+  document. No raw files saved. Absence recorded as valid data.
+hosts:
+- host: https://api.authorize.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://developer.authorize.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/ai-plugin.json
+    status: 403
+  - path: /llms.txt
+    status: 404
+- host: https://www.authorize.net
+  documents:
+  - path: /.well-known/security.txt
+    status: 403

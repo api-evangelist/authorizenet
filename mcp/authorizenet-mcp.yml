@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: searched
+status: candidate
+source: https://github.com/AuthorizeNet/authorize-net-mcp
+server:
+  name: authorize-net-mcp
+  transport: unknown
+  repo: https://github.com/AuthorizeNet/authorize-net-mcp
+official_repo_note: >-
+  An official-organization repository named "authorize-net-mcp" exists in the
+  AuthorizeNet GitHub org (created 2025-08-21), which signals intent to ship a
+  first-party MCP server. As of 2026-07-18 the repository is EMPTY (size 0, no
+  default-branch content, no releases) — no usable server code is published yet.
+  This artifact therefore documents a CANDIDATE tool surface derived from the
+  documented Authorize.net API operations, not a working hosted server. Re-run the
+  pipeline to upgrade to status: published if/when the repo ships code.
+tools:
+- name: create_transaction
+  description: Charge a card, authorize-only, capture a prior auth, refund, or void via createTransactionRequest
+  source_operation: createTransactionRequest
+- name: get_transaction_details
+  description: Retrieve details for a settled or unsettled transaction
+  source_operation: getTransactionDetailsRequest
+- name: create_customer_profile
+  description: Create a stored customer profile (Customer Information Manager)
+  source_operation: createCustomerProfileRequest
+- name: create_customer_payment_profile
+  description: Add a stored payment method to a customer profile
+  source_operation: createCustomerPaymentProfileRequest
+- name: charge_customer_profile
+  description: Charge a stored customer payment profile
+  source_operation: createTransactionRequest (profile)
+- name: create_subscription
+  description: Create an Automated Recurring Billing (ARB) subscription
+  source_operation: ARBCreateSubscriptionRequest
+- name: get_settled_batch_list
+  description: List settled transaction batches for reporting
+  source_operation: getSettledBatchListRequest
+- name: create_webhook
+  description: Register a webhook endpoint for event notifications
+  source_operation: POST /rest/v1/webhooks
+- name: list_webhooks
+  description: List configured webhooks
+  source_operation: GET /rest/v1/webhooks
+- name: get_notification_history
+  description: Retrieve webhook notification delivery history
+  source_operation: GET /rest/v1/notifications

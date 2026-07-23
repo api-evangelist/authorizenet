@@ -1,0 +1,58 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.authorize.net/hello_world/testing_guide.html
+environments:
+  sandbox_signup: https://developer.authorize.net/hello_world/sandbox.html
+  sandbox_portal: https://sandbox.authorize.net/
+  sandbox_api_endpoint: https://apitest.authorize.net/xml/v1/request.api
+  production_api_endpoint: https://api.authorize.net/xml/v1/request.api
+  separation: >-
+    Sandbox uses separate merchant credentials (API Login ID + Transaction Key) obtained
+    from a free developer sandbox account; production credentials are issued per merchant
+    account. No live cards are charged in sandbox.
+test_cards:
+  visa:
+  - '4007000000027'
+  - '4012888818888'
+  - '4111111111111111'
+  mastercard:
+  - '5424000000000015'
+  - '2223000010309703'
+  - '2223000010309711'
+  american_express:
+  - '370000000000002'
+  discover:
+  - '6011000000000012'
+  jcb:
+  - '3088000000000017'
+  diners_club:
+  - '38000000000006'
+  china_unionpay:
+  - '6221499053360818'
+  - '6262320002000067'
+  - '6284480000000008'
+  expiration_note: Use any future expiration date. Card codes trigger CVV responses (see below).
+test_bank_accounts:
+  note: >-
+    Testing eCheck.Net transactions requires a valid routing number (Federal Reserve
+    published values) and any random checking account number. Amounts under $100 are
+    accepted; amounts over $100 generate declines.
+decline_triggers:
+  general_decline:
+    zip: '46282'
+    result: General decline (transaction Response Code 2)
+  avs_by_zip:
+  - {zip: '46203', avs_code: E, meaning: Invalid AVS data}
+  - {zip: '46207', avs_code: R, meaning: System unavailable / retry}
+  - {zip: '46204', avs_code: G, meaning: Non-U.S. card-issuing bank}
+  - {zip: '46205', avs_code: 'N', meaning: Street address and ZIP do not match}
+  - {zip: '46201', avs_code: A, meaning: Address matches, ZIP does not}
+  - {zip: '46217', avs_code: Z, meaning: Address does not match, ZIP matches}
+  cvv_by_card_code:
+  - {card_code: '900', cvv_code: M, meaning: CVV matches}
+  - {card_code: '901', cvv_code: 'N', meaning: CVV does not match}
+  - {card_code: '902', cvv_code: S, meaning: CVV should be on card but was not indicated}
+  - {card_code: '903', cvv_code: U, meaning: Issuer not certified for CVV}
+  - {card_code: '904', cvv_code: P, meaning: CVV not processed}
+notes: >-
+  All values captured verbatim from the Authorize.net Testing Guide. Nothing invented.

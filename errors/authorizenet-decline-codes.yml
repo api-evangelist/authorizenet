@@ -1,0 +1,43 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.authorize.net/api/reference/responseCodes.html and https://developer.authorize.net/hello_world/testing_guide.html
+envelope:
+  transaction_response_code_field: transactionResponse.responseCode
+  avs_field: transactionResponse.avsResultCode
+  cvv_field: transactionResponse.cvvResultCode
+  api_result_field: messages.resultCode  # Ok | Error
+  detail_message_field: messages.message[].code / messages.message[].text
+transaction_response_codes:
+- {code: '1', meaning: Approved, action: Proceed; transaction accepted}
+- {code: '2', meaning: Declined, action: Do not proceed; card declined by processor/issuer}
+- {code: '3', meaning: Error, action: Inspect the accompanying reason code and message; correct the request}
+- {code: '4', meaning: Held for Review, action: Transaction flagged by fraud filters; awaits manual review/settlement decision}
+avs_result_codes:
+- {code: A, meaning: Street address matches, ZIP does not}
+- {code: B, meaning: Address information not provided for AVS check}
+- {code: E, meaning: AVS data is invalid or AVS not allowed for this card type}
+- {code: G, meaning: Card issued by a non-U.S. bank; does not support AVS}
+- {code: 'N', meaning: Neither street address nor ZIP match}
+- {code: P, meaning: AVS not applicable for this transaction}
+- {code: R, meaning: Retry - system unavailable or timed out}
+- {code: S, meaning: AVS not supported by card issuer}
+- {code: U, meaning: Address information unavailable}
+- {code: W, meaning: Nine-digit ZIP matches, street address does not}
+- {code: X, meaning: Street address and nine-digit ZIP match}
+- {code: Y, meaning: Street address and five-digit ZIP match}
+- {code: Z, meaning: Five-digit ZIP matches, street address does not}
+cvv_result_codes:
+- {code: M, meaning: CVV matches}
+- {code: 'N', meaning: CVV does not match}
+- {code: P, meaning: CVV was not processed}
+- {code: S, meaning: CVV should be on the card but merchant indicated it was not present}
+- {code: U, meaning: Card issuer is not certified or has not provided CVV encryption key}
+masked_to_buyer:
+  note: >-
+    The high-level responseCode (1/2/3/4) and the human message are surface-safe; the
+    granular reason codes, AVS, and CVV result codes are for merchant/processor use and
+    are typically not shown verbatim to cardholders.
+reference_tool: >-
+  Authorize.net publishes an interactive response-code lookup and a downloadable JSON of
+  the complete reason-code set at the responseCodes.html reference; this file captures the
+  stable high-level response, AVS, and CVV code families.

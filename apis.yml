@@ -1,24 +1,132 @@
 aid: authorizenet
 name: Authorize.net
-description: 'Authorize.net is a company surfaced as a portfolio company of insight-partners and added
-  to the API Evangelist network as a stub for enrichment. Sector: payments. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Authorize.net is a payment gateway operated by Visa (Visa Acceptance Solutions)
+  that lets merchants and platforms accept credit card and eCheck.Net payments online,
+  in person, and through mobile apps. Its developer platform exposes a transaction
+  API (the XML/JSON gateway at /xml/v1 and a REST surface at /rest/v1) for one-time and
+  recurring payments, the Customer Information Manager (CIM) for stored payment profiles,
+  Accept.js and Accept Hosted for tokenized/hosted card capture, Automated Recurring
+  Billing (ARB), transaction reporting, fraud detection (Advanced Fraud Detection Suite),
+  and webhooks for asynchronous event notifications. Official server SDKs ship for PHP,
+  .NET, Java, Python, Node.js, and Ruby, plus Accept mobile SDKs for iOS and Android.
+  Authentication uses merchant API Login ID + Transaction Key, with OAuth 2.0 available
+  for partner/Accept integrations. Added to the API Evangelist network from an
+  Insight Partners portfolio lead and enriched from Authorize.net's public developer
+  surface.
 url: https://raw.githubusercontent.com/api-evangelist/authorizenet/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - insight-partners
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: enriched
+x-tier-reason: portfolio-lead-enriched
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://www.authorize.net/content/dam/authorize/images/logos/anet-logo.png
 tags:
 - Company
 - Payments
-apis: []
+- Payment Gateway
+- Credit Cards
+- eCommerce
+- Recurring Billing
+- Fraud Detection
+- Webhooks
+- Financial Services
+apis:
+- name: Authorize.net API
+  description: >-
+    Payment gateway API for accepting credit card and eCheck.Net payments, storing
+    customer payment profiles (CIM), recurring billing (ARB), hosted/tokenized card
+    capture (Accept.js / Accept Hosted), transaction reporting, and webhook event
+    notifications.
+  humanURL: https://developer.authorize.net/
+  baseURL: https://api.authorize.net
+  tags:
+  - Payments
+  - Payment Gateway
+  - Recurring Billing
+  properties:
+  - type: APIReference
+    url: https://developer.authorize.net/api/reference/index.html
+  - type: Documentation
+    url: https://developer.authorize.net/api/reference/index.html
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+common:
+- type: DomainSecurity
+  url: security/authorizenet-domain-security.yml
+- type: DeveloperPortal
+  url: https://developer.authorize.net/
+- type: Documentation
+  url: https://developer.authorize.net/api/reference/index.html
+- type: APIReference
+  url: https://developer.authorize.net/api/reference/index.html
+- type: GettingStarted
+  url: https://developer.authorize.net/hello_world.html
+- type: Support
+  url: https://developer.authorize.net/support.html
+- type: GitHubOrganization
+  url: https://github.com/AuthorizeNet
+- type: Website
+  url: https://www.authorize.net/
+- type: SignUp
+  url: https://www.authorize.net/sign-up.html
+- type: Login
+  url: https://account.authorize.net/
+- type: Pricing
+  url: https://www.authorize.net/sign-up/pricing.html
+- type: TermsOfService
+  url: https://www.authorize.net/about-us/terms.html
+- type: PrivacyPolicy
+  url: https://www.authorize.net/about-us/privacy.html
+- type: Postman
+  url: https://github.com/AuthorizeNet/webhooks-postman-collection
+- type: StatusPage
+  url: https://status.authorize.net/
+- type: Packages
+  url: packages/authorizenet-packages.yml
+- type: SDKs
+  url: packages/authorizenet-packages.yml
+- type: MCPServer
+  url: mcp/authorizenet-mcp.yml
+- type: Lifecycle
+  url: lifecycle/authorizenet-lifecycle.yml
+- type: Sandbox
+  url: sandbox/authorizenet-sandbox.yml
+- type: Webhooks
+  url: asyncapi/authorizenet-webhooks.yml
+- type: DeclineCodes
+  url: errors/authorizenet-decline-codes.yml
+- type: ErrorCatalog
+  url: errors/authorizenet-decline-codes.yml
+- type: Conformance
+  url: conformance/authorizenet-conformance.yml
+- type: Authentication
+  url: authentication/authorizenet-authentication.yml
+- type: Conventions
+  url: conventions/authorizenet-conventions.yml
+- type: Idempotency
+  url: conventions/authorizenet-conventions.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

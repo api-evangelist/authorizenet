@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.authorize.net/api/reference/index.html
+authentication:
+  style: merchantAuthentication (API Login ID + Transaction Key) in request body; OAuth 2.0 for partner delegation
+  ref: authentication/authorizenet-authentication.yml
+formats:
+  request: XML or JSON to the same /xml/v1 gateway endpoint; REST/JSON for webhooks (/rest/v1)
+  content_types: [application/json, text/xml, application/xml]
+  encoding_note: >-
+    JSON requests must preserve element ordering that mirrors the XML schema; fields are
+    order-sensitive on the gateway endpoint.
+idempotency:
+  supported: true
+  mechanism: duplicateWindow
+  parameter: transactionSettings.setting[settingName=duplicateWindow].settingValue
+  description: >-
+    Server-side duplicate-transaction suppression. "Time in seconds to check for
+    subsequent duplicate requests of this transaction. Use to help prevent accidental
+    double-billing." Duplicate requests within the window are rejected as duplicates
+    rather than re-charged.
+  max_window_seconds: 28800  # 8 hours
+  note: >-
+    This is a content-based duplicate-suppression window, not a client-supplied
+    idempotency-key header; it delivers idempotent behavior for retried charges within
+    the configured window.
+request_reference:
+  merchant_ref: refId  # optional merchant-assigned reference echoed back on the response
+  linking: refTransId  # links follow-up operations (priorAuthCapture, refund, void) to the original transaction
+pagination:
+  style: paging
+  note: >-
+    Reporting operations (e.g. getSettledBatchListRequest, getTransactionListRequest)
+    accept a paging element with limit and offset. The core payment gateway is
+    request/response and not paginated.
+error_envelope:
+  result_field: messages.resultCode  # Ok | Error
+  messages: messages.message[] with code + text
+  transaction_result: transactionResponse.responseCode (1 Approved / 2 Declined / 3 Error / 4 Held)
+  ref: errors/authorizenet-decline-codes.yml
+webhooks:
+  signature: X-ANET-Signature (HMAC-SHA512 of body using Signature Key)
+  ref: asyncapi/authorizenet-webhooks.yml
+rate_limiting:
+  documented: false
+  note: No public per-key rate-limit headers are documented; throughput is governed by merchant account/processor limits.
+versioning:
+  ref: lifecycle/authorizenet-lifecycle.yml

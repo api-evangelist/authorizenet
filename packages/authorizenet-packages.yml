@@ -1,0 +1,79 @@
+generated: '2026-07-18'
+method: searched
+source: https://developer.authorize.net/api/reference/index.html and public package registries
+packages:
+- language: php
+  registry: packagist
+  name: authorizenet/authorizenet
+  version: 2.0.4
+  url: https://packagist.org/packages/authorizenet/authorizenet
+  repo: https://github.com/AuthorizeNet/sdk-php
+  install: composer require authorizenet/authorizenet
+  official: true
+- language: dotnet
+  registry: nuget
+  name: AuthorizeNet
+  version: 2.0.5
+  url: https://www.nuget.org/packages/AuthorizeNet
+  repo: https://github.com/AuthorizeNet/sdk-dotnet
+  install: dotnet add package AuthorizeNet
+  official: true
+- language: java
+  registry: maven-central
+  name: net.authorize:anet-java-sdk
+  version: 3.0.0
+  url: https://central.sonatype.com/artifact/net.authorize/anet-java-sdk
+  repo: https://github.com/AuthorizeNet/sdk-java
+  install: 'maven: net.authorize:anet-java-sdk:3.0.0'
+  official: true
+- language: python
+  registry: pypi
+  name: authorizenet
+  version: 1.1.6
+  url: https://pypi.org/project/authorizenet/
+  repo: https://github.com/AuthorizeNet/sdk-python
+  install: pip install authorizenet
+  official: true
+- language: javascript
+  registry: npm
+  name: authorizenet
+  version: 1.0.10
+  url: https://www.npmjs.com/package/authorizenet
+  repo: https://github.com/AuthorizeNet/sdk-node
+  install: npm install authorizenet
+  official: true
+- language: ruby
+  registry: rubygems
+  name: authorizenet
+  version: 2.0.2
+  url: https://rubygems.org/gems/authorizenet
+  repo: https://github.com/AuthorizeNet/sdk-ruby
+  install: gem install authorizenet
+  official: true
+mobile_sdks:
+- platform: ios
+  name: Accept SDK iOS (accept-sdk-ios)
+  repo: https://github.com/AuthorizeNet/accept-sdk-ios
+  official: true
+  note: In-app payments for iOS (Swift)
+- platform: android
+  name: Accept SDK Android (accept-sdk-android)
+  repo: https://github.com/AuthorizeNet/accept-sdk-android
+  official: true
+  note: In-app payments for Android
+- platform: ios
+  name: In-Person SDK iOS (inperson-sdk-ios)
+  repo: https://github.com/AuthorizeNet/inperson-sdk-ios
+  official: true
+  note: Card-present / point-of-sale
+- platform: android
+  name: In-Person SDK Android (inperson-sdk-android)
+  repo: https://github.com/AuthorizeNet/inperson-sdk-android
+  official: true
+  note: Card-present / point-of-sale
+notes: >-
+  Server SDK versions captured live from each registry on 2026-07-18. All six server
+  SDKs are maintained in the official AuthorizeNet GitHub organization. Mobile SDKs
+  are source-distributed via GitHub. Sample-code repositories exist per language
+  (sample-code-php, sample-code-java, sample-code-csharp, sample-code-ruby,
+  sample-code-python, sample-code-node).
