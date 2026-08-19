@@ -6,14 +6,12 @@ server:
   name: authorize-net-mcp
   transport: unknown
   repo: https://github.com/AuthorizeNet/authorize-net-mcp
-official_repo_note: >-
-  An official-organization repository named "authorize-net-mcp" exists in the
-  AuthorizeNet GitHub org (created 2025-08-21), which signals intent to ship a
-  first-party MCP server. As of 2026-07-18 the repository is EMPTY (size 0, no
-  default-branch content, no releases) — no usable server code is published yet.
-  This artifact therefore documents a CANDIDATE tool surface derived from the
-  documented Authorize.net API operations, not a working hosted server. Re-run the
-  pipeline to upgrade to status: published if/when the repo ships code.
+official_repo_note: 'An official-organization repository named "authorize-net-mcp" exists in the AuthorizeNet
+  GitHub org (created 2025-08-21), which signals intent to ship a first-party MCP server. As of 2026-07-18
+  the repository is EMPTY (size 0, no default-branch content, no releases) — no usable server code is
+  published yet. This artifact therefore documents a CANDIDATE tool surface derived from the documented
+  Authorize.net API operations, not a working hosted server. Re-run the pipeline to upgrade to status:
+  published if/when the repo ships code.'
 tools:
 - name: create_transaction
   description: Charge a card, authorize-only, capture a prior auth, refund, or void via createTransactionRequest
@@ -45,3 +43,9 @@ tools:
 - name: get_notification_history
   description: Retrieve webhook notification delivery history
   source_operation: GET /rest/v1/notifications
+deployment:
+  mode: none
+  verified: derived
+  tools: 10
+  checked: '2026-08-12'
+  source: catalog MCP census
