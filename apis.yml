@@ -1,19 +1,6 @@
 aid: authorizenet
 name: Authorize.net
-description: >-
-  Authorize.net is a payment gateway operated by Visa (Visa Acceptance Solutions)
-  that lets merchants and platforms accept credit card and eCheck.Net payments online,
-  in person, and through mobile apps. Its developer platform exposes a transaction
-  API (the XML/JSON gateway at /xml/v1 and a REST surface at /rest/v1) for one-time and
-  recurring payments, the Customer Information Manager (CIM) for stored payment profiles,
-  Accept.js and Accept Hosted for tokenized/hosted card capture, Automated Recurring
-  Billing (ARB), transaction reporting, fraud detection (Advanced Fraud Detection Suite),
-  and webhooks for asynchronous event notifications. Official server SDKs ship for PHP,
-  .NET, Java, Python, Node.js, and Ruby, plus Accept mobile SDKs for iOS and Android.
-  Authentication uses merchant API Login ID + Transaction Key, with OAuth 2.0 available
-  for partner/Accept integrations. Added to the API Evangelist network from an
-  Insight Partners portfolio lead and enriched from Authorize.net's public developer
-  surface.
+description: Authorize.net is a payment gateway operated by Visa (Visa Acceptance Solutions) that lets merchants and platforms accept credit card and eCheck.Net payments online, in person, and through mobile apps. Its developer platform exposes a transaction API (the XML/JSON gateway at /xml/v1 and a REST surface at /rest/v1) for one-time and recurring payments, the Customer Information Manager (CIM) for stored payment profiles, Accept.js and Accept Hosted for tokenized/hosted card capture, Automated Recurring Billing (ARB), transaction reporting, fraud detection (Advanced Fraud Detection Suite), and webhooks for asynchronous event notifications. Official server SDKs ship for PHP, .NET, Java, Python, Node.js, and Ruby, plus Accept mobile SDKs for iOS and Android. Authentication uses merchant API Login ID + Transaction Key, with OAuth 2.0 available for partner/Accept integrations. Added to the API Evangelist network from an Insight Partners portfolio lead and enriched from Authorize.net's public developer surface.
 url: https://raw.githubusercontent.com/api-evangelist/authorizenet/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -70,11 +57,7 @@ tags_raw:
 - Financial Services
 apis:
 - name: Authorize.net API
-  description: >-
-    Payment gateway API for accepting credit card and eCheck.Net payments, storing
-    customer payment profiles (CIM), recurring billing (ARB), hosted/tokenized card
-    capture (Accept.js / Accept Hosted), transaction reporting, and webhook event
-    notifications.
+  description: Payment gateway API for accepting credit card and eCheck.Net payments, storing customer payment profiles (CIM), recurring billing (ARB), hosted/tokenized card capture (Accept.js / Accept Hosted), transaction reporting, and webhook event notifications.
   humanURL: https://developer.authorize.net/
   baseURL: https://api.authorize.net
   tags:
@@ -86,6 +69,96 @@ apis:
     url: https://developer.authorize.net/api/reference/index.html
   - type: Documentation
     url: https://developer.authorize.net/api/reference/index.html
+- aid: authorizenet:authorize-net-payment-api
+  name: Authorize.net Payment API
+  description: 'The Authorize.net Payment API enables merchants to process credit card, debit card, eCheck, Apple Pay, Google Pay, and PayPal transactions via a POST-based XML/JSON API with API Login ID and Transaction Key authentication.
+
+    '
+  humanURL: https://developer.authorize.net/api/reference/
+  baseURL: https://api.authorize.net/xml/v1/request.api
+  tags:
+  - Credit Cards
+  - eChecks
+  - Payment Gateway
+  - Transaction
+  tags_raw:
+  - Credit Cards
+  - eChecks
+  - Payment Gateway
+  - Transactions
+  properties:
+  - type: Documentation
+    url: https://developer.authorize.net/api/reference/
+  - type: GettingStarted
+    url: https://developer.authorize.net/hello_world/
+  - type: Authentication
+    url: https://developer.authorize.net/api/reference/features/authentication.html
+  - type: APIReference
+    url: https://developer.authorize.net/api/reference/
+  - type: Sandbox
+    url: https://sandbox.authorize.net/
+- aid: authorizenet:authorize-net-recurring-billing-api
+  name: Authorize.net Recurring Billing API
+  description: 'The Authorize.net Automated Recurring Billing (ARB) API enables merchants to create, update, and cancel subscription-based payment schedules for recurring charges.
+
+    '
+  humanURL: https://developer.authorize.net/api/reference/features/recurring_billing.html
+  baseURL: https://api.authorize.net/xml/v1/request.api
+  tags:
+  - Payment Gateway
+  - Recurring Billing
+  - Subscription
+  tags_raw:
+  - Payment Gateway
+  - Recurring Billing
+  - Subscriptions
+  properties:
+  - type: Documentation
+    url: https://developer.authorize.net/api/reference/features/recurring_billing.html
+- aid: authorizenet:authorize-net-customer-profiles-api
+  name: Authorize.net Customer Profiles API
+  description: 'The Authorize.net Customer Information Manager (CIM) API enables secure storage and management of customer payment profiles including credit cards and bank accounts for reuse in future transactions.
+
+    '
+  humanURL: https://developer.authorize.net/api/reference/features/customer_profiles.html
+  baseURL: https://api.authorize.net/xml/v1/request.api
+  tags:
+  - Customer Profiles
+  - Payment Gateway
+  - Tokenization
+  properties:
+  - type: Documentation
+    url: https://developer.authorize.net/api/reference/features/customer_profiles.html
+- aid: authorizenet:authorize-net-webhooks
+  name: Authorize.net Webhooks
+  description: 'Authorize.net Webhooks deliver real-time event notifications for transaction, subscription, and fraud management events to merchant-configured HTTP endpoints.
+
+    '
+  humanURL: https://developer.authorize.net/api/reference/features/webhooks.html
+  baseURL: https://api.authorize.net/rest/v1
+  tags:
+  - Event
+  - Payment Gateway
+  - Webhook
+  tags_raw:
+  - Events
+  - Payment Gateway
+  - Webhooks
+  properties:
+  - type: Documentation
+    url: https://developer.authorize.net/api/reference/features/webhooks.html
+- aid: authorizenet:authorize-net-transactions-api
+  name: Authorize.net Transactions API
+  description: Charge, authorize, capture, void and refund transactions.
+  humanURL: https://developer.authorize.net/api/reference/
+  baseURL: https://api.authorize.net/xml/v1/request.api
+  tags:
+  - Transaction
+  tags_raw:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/authorize-net-transactions-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
