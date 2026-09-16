@@ -57,7 +57,10 @@ tags_raw:
 - Financial Services
 apis:
 - name: Authorize.net API
-  description: Payment gateway API for accepting credit card and eCheck.Net payments, storing customer payment profiles (CIM), recurring billing (ARB), hosted/tokenized card capture (Accept.js / Accept Hosted), transaction reporting, and webhook event notifications.
+  description: >-
+    Payment gateway API for accepting credit card and eCheck.Net payments, storing customer payment profiles
+    (CIM), recurring billing (ARB), hosted/tokenized card capture (Accept.js / Accept Hosted), transaction
+    reporting, and webhook event notifications.
   humanURL: https://developer.authorize.net/
   baseURL: https://api.authorize.net
   tags:
@@ -71,9 +74,10 @@ apis:
     url: https://developer.authorize.net/api/reference/index.html
 - aid: authorizenet:authorize-net-payment-api
   name: Authorize.net Payment API
-  description: 'The Authorize.net Payment API enables merchants to process credit card, debit card, eCheck, Apple Pay, Google Pay, and PayPal transactions via a POST-based XML/JSON API with API Login ID and Transaction Key authentication.
-
-    '
+  description: >
+    The Authorize.net Payment API enables merchants to process credit card, debit card, eCheck, Apple
+    Pay, Google Pay, and PayPal transactions via a POST-based XML/JSON API with API Login ID and Transaction
+    Key authentication.
   humanURL: https://developer.authorize.net/api/reference/
   baseURL: https://api.authorize.net/xml/v1/request.api
   tags:
@@ -99,9 +103,9 @@ apis:
     url: https://sandbox.authorize.net/
 - aid: authorizenet:authorize-net-recurring-billing-api
   name: Authorize.net Recurring Billing API
-  description: 'The Authorize.net Automated Recurring Billing (ARB) API enables merchants to create, update, and cancel subscription-based payment schedules for recurring charges.
-
-    '
+  description: >
+    The Authorize.net Automated Recurring Billing (ARB) API enables merchants to create, update, and cancel
+    subscription-based payment schedules for recurring charges.
   humanURL: https://developer.authorize.net/api/reference/features/recurring_billing.html
   baseURL: https://api.authorize.net/xml/v1/request.api
   tags:
@@ -117,9 +121,9 @@ apis:
     url: https://developer.authorize.net/api/reference/features/recurring_billing.html
 - aid: authorizenet:authorize-net-customer-profiles-api
   name: Authorize.net Customer Profiles API
-  description: 'The Authorize.net Customer Information Manager (CIM) API enables secure storage and management of customer payment profiles including credit cards and bank accounts for reuse in future transactions.
-
-    '
+  description: >
+    The Authorize.net Customer Information Manager (CIM) API enables secure storage and management of
+    customer payment profiles including credit cards and bank accounts for reuse in future transactions.
   humanURL: https://developer.authorize.net/api/reference/features/customer_profiles.html
   baseURL: https://api.authorize.net/xml/v1/request.api
   tags:
@@ -131,9 +135,9 @@ apis:
     url: https://developer.authorize.net/api/reference/features/customer_profiles.html
 - aid: authorizenet:authorize-net-webhooks
   name: Authorize.net Webhooks
-  description: 'Authorize.net Webhooks deliver real-time event notifications for transaction, subscription, and fraud management events to merchant-configured HTTP endpoints.
-
-    '
+  description: >
+    Authorize.net Webhooks deliver real-time event notifications for transaction, subscription, and fraud
+    management events to merchant-configured HTTP endpoints.
   humanURL: https://developer.authorize.net/api/reference/features/webhooks.html
   baseURL: https://api.authorize.net/rest/v1
   tags:
@@ -147,18 +151,16 @@ apis:
   properties:
   - type: Documentation
     url: https://developer.authorize.net/api/reference/features/webhooks.html
-- aid: authorizenet:authorize-net-transactions-api
+- aid: authorizenet:authorizenet-transactions-api
   name: Authorize.net Transactions API
   description: Charge, authorize, capture, void and refund transactions.
-  humanURL: https://developer.authorize.net/api/reference/
-  baseURL: https://api.authorize.net/xml/v1/request.api
+  humanURL: https://developer.authorize.net/
+  baseURL: https://api.authorize.net
   tags:
-  - Transaction
-  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
-    url: openapi/authorize-net-transactions-api-openapi.yml
+    url: openapi/authorizenet-transactions-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
