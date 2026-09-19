@@ -157,6 +157,8 @@ apis:
   humanURL: https://developer.authorize.net/
   baseURL: https://api.authorize.net
   tags:
+  - Transaction
+  tags_raw:
   - Transactions
   properties:
   - type: OpenAPI
