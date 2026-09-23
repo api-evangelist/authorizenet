@@ -1,0 +1,179 @@
+# x-archived-from: authorize-net-transactions-api-openapi.yml
+# x-archived-on: 2026-09-16
+openapi: 3.2.0
+info:
+  title: Authorize.Net Transactions API
+  description: 'Best-effort OpenAPI 3.1 description of the Authorize.Net payments API.
+
+    Authorize.Net uses a single-endpoint architecture: all operations are POSTed
+
+    to /xml/v1/request.api with the operation selected via a transaction or
+
+    request type inside the JSON body. Derived from the public reference at
+
+    https://developer.authorize.net/api/reference/.
+
+    '
+  version: '1'
+  contact:
+    name: Authorize.Net Developer Center
+    url: https://developer.authorize.net/api/reference/
+servers:
+- url: https://api.authorize.net
+  description: Production
+- url: https://apitest.authorize.net
+  description: Sandbox
+security:
+- merchantAuthentication: []
+tags:
+- name: Transactions
+  description: Charge, authorize, capture, void and refund transactions.
+paths:
+  /xml/v1/request.api:
+    post:
+      tags:
+      - Transactions
+      summary: Submit an Authorize.Net API request
+      description: 'Authorize.Net uses a single endpoint for all API calls. The desired
+
+        operation is selected via the wrapping request object name in the JSON
+
+        (or XML) body, e.g. `createTransactionRequest` with a nested
+
+        `transactionRequest.transactionType` value such as
+
+        `authCaptureTransaction`, `authOnlyTransaction`,
+
+        `priorAuthCaptureTransaction`, `refundTransaction` or
+
+        `voidTransaction`. Merchant credentials are passed inside the body via
+
+        the `merchantAuthentication` object (apiLoginID + transactionKey).
+
+        '
+      operationId: submitRequest
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnetApiRequest'
+          text/xml:
+            schema:
+              type: string
+              description: XML body conforming to AnetApiSchema.xsd
+      responses:
+        '200':
+          description: API response (JSON or XML)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnetApiResponse'
+            text/xml:
+              schema:
+                type: string
+components:
+  schemas:
+    MerchantAuthentication:
+      type: object
+      required:
+      - name
+      - transactionKey
+      properties:
+        name:
+          type: string
+          maxLength: 25
+          description: API Login ID
+        transactionKey:
+          type: string
+          maxLength: 16
+          description: Transaction Key
+    CreateTransactionRequest:
+      type: object
+      required:
+      - merchantAuthentication
+      - transactionRequest
+      properties:
+        merchantAuthentication:
+          $ref: '#/components/schemas/MerchantAuthentication'
+        refId:
+          type: string
+        transactionRequest:
+          $ref: '#/components/schemas/TransactionRequest'
+    AnetApiRequest:
+      oneOf:
+      - type: object
+        properties:
+          createTransactionRequest:
+            $ref: '#/components/schemas/CreateTransactionRequest'
+      - type: object
+        description: 'Any other Authorize.Net request envelope, e.g.
+
+          createCustomerProfileRequest, getTransactionDetailsRequest,
+
+          getSettledBatchListRequest, createCustomerPaymentProfileRequest, etc.
+
+          '
+    TransactionRequest:
+      type: object
+      properties:
+        transactionType:
+          type: string
+          enum:
+          - authCaptureTransaction
+          - authOnlyTransaction
+          - priorAuthCaptureTransaction
+          - refundTransaction
+          - voidTransaction
+        amount:
+          type: string
+          description: Decimal amount as string
+        payment:
+          type: object
+          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
+        refTransId:
+          type: string
+          description: Reference transaction ID for capture/void/refund
+    AnetApiResponse:
+      type: object
+      description: 'Authorize.Net response envelope. Common fields include `messages` with
+
+        `resultCode` and an array of `message` objects, plus operation-specific
+
+        payloads (e.g. transactionResponse).
+
+        '
+      properties:
+        messages:
+          type: object
+          properties:
+            resultCode:
+              type: string
+              enum:
+              - Ok
+              - Error
+            message:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  text:
+                    type: string
+  securitySchemes:
+    merchantAuthentication:
+      type: apiKey
+      in: header
+      name: X-Anet-Merchant-Auth
+      description: 'Authorize.Net does not use HTTP authentication. Instead, every request
+
+        must include a `merchantAuthentication` object in the JSON/XML body
+
+        containing the merchant''s API Login ID (`name`) and `transactionKey`.
+
+        This security scheme entry is a placeholder so OpenAPI tooling can model
+
+        the requirement.
+
+        '

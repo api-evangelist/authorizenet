@@ -1,0 +1,19 @@
+{
+  "provider": "authorizenet",
+  "sources": [
+    "_original/authorize-net-transactions-api-openapi.yml"
+  ],
+  "outputs": [
+    "authorizenet-transactions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "authorizenet-transactions-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
+}
