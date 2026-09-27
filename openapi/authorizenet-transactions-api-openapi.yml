@@ -82,6 +82,40 @@ components:
           type: string
           maxLength: 16
           description: Transaction Key
+    AnetApiRequest:
+      oneOf:
+      - type: object
+        properties:
+          createTransactionRequest:
+            $ref: '#/components/schemas/CreateTransactionRequest'
+      - type: object
+        description: 'Any other Authorize.Net request envelope, e.g.
+
+          createCustomerProfileRequest, getTransactionDetailsRequest,
+
+          getSettledBatchListRequest, createCustomerPaymentProfileRequest, etc.
+
+          '
+    TransactionRequest:
+      type: object
+      properties:
+        transactionType:
+          type: string
+          enum:
+          - authCaptureTransaction
+          - authOnlyTransaction
+          - priorAuthCaptureTransaction
+          - refundTransaction
+          - voidTransaction
+        amount:
+          type: string
+          description: Decimal amount as string
+        payment:
+          type: object
+          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
+        refTransId:
+          type: string
+          description: Reference transaction ID for capture/void/refund
     CreateTransactionRequest:
       type: object
       required:
@@ -121,40 +155,6 @@ components:
                     type: string
                   text:
                     type: string
-    TransactionRequest:
-      type: object
-      properties:
-        transactionType:
-          type: string
-          enum:
-          - authCaptureTransaction
-          - authOnlyTransaction
-          - priorAuthCaptureTransaction
-          - refundTransaction
-          - voidTransaction
-        amount:
-          type: string
-          description: Decimal amount as string
-        payment:
-          type: object
-          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
-        refTransId:
-          type: string
-          description: Reference transaction ID for capture/void/refund
-    AnetApiRequest:
-      oneOf:
-      - type: object
-        properties:
-          createTransactionRequest:
-            $ref: '#/components/schemas/CreateTransactionRequest'
-      - type: object
-        description: 'Any other Authorize.Net request envelope, e.g.
-
-          createCustomerProfileRequest, getTransactionDetailsRequest,
-
-          getSettledBatchListRequest, createCustomerPaymentProfileRequest, etc.
-
-          '
   securitySchemes:
     merchantAuthentication:
       type: apiKey

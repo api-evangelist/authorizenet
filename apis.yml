@@ -42,9 +42,9 @@ tags:
 - Credit Cards
 - E-Commerce
 - Recurring Billing
-- Fraud Detection
+- Fraud Prevention
 - Webhook
-- Financial-Services
+- Financial Services
 tags_raw:
 - Company
 - Payments
@@ -55,6 +55,7 @@ tags_raw:
 - Fraud Detection
 - Webhooks
 - Financial Services
+- Financial-Services
 apis:
 - name: Authorize.net API
   description: >-
