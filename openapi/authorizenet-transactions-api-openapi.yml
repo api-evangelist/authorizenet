@@ -68,6 +68,65 @@ paths:
                 type: string
 components:
   schemas:
+    TransactionRequest:
+      type: object
+      properties:
+        transactionType:
+          type: string
+          enum:
+          - authCaptureTransaction
+          - authOnlyTransaction
+          - priorAuthCaptureTransaction
+          - refundTransaction
+          - voidTransaction
+        amount:
+          type: string
+          description: Decimal amount as string
+        payment:
+          type: object
+          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
+        refTransId:
+          type: string
+          description: Reference transaction ID for capture/void/refund
+    AnetApiResponse:
+      type: object
+      description: 'Authorize.Net response envelope. Common fields include `messages` with
+
+        `resultCode` and an array of `message` objects, plus operation-specific
+
+        payloads (e.g. transactionResponse).
+
+        '
+      properties:
+        messages:
+          type: object
+          properties:
+            resultCode:
+              type: string
+              enum:
+              - Ok
+              - Error
+            message:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  text:
+                    type: string
+    CreateTransactionRequest:
+      type: object
+      required:
+      - merchantAuthentication
+      - transactionRequest
+      properties:
+        merchantAuthentication:
+          $ref: '#/components/schemas/MerchantAuthentication'
+        refId:
+          type: string
+        transactionRequest:
+          $ref: '#/components/schemas/TransactionRequest'
     MerchantAuthentication:
       type: object
       required:
@@ -96,65 +155,6 @@ components:
           getSettledBatchListRequest, createCustomerPaymentProfileRequest, etc.
 
           '
-    TransactionRequest:
-      type: object
-      properties:
-        transactionType:
-          type: string
-          enum:
-          - authCaptureTransaction
-          - authOnlyTransaction
-          - priorAuthCaptureTransaction
-          - refundTransaction
-          - voidTransaction
-        amount:
-          type: string
-          description: Decimal amount as string
-        payment:
-          type: object
-          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
-        refTransId:
-          type: string
-          description: Reference transaction ID for capture/void/refund
-    CreateTransactionRequest:
-      type: object
-      required:
-      - merchantAuthentication
-      - transactionRequest
-      properties:
-        merchantAuthentication:
-          $ref: '#/components/schemas/MerchantAuthentication'
-        refId:
-          type: string
-        transactionRequest:
-          $ref: '#/components/schemas/TransactionRequest'
-    AnetApiResponse:
-      type: object
-      description: 'Authorize.Net response envelope. Common fields include `messages` with
-
-        `resultCode` and an array of `message` objects, plus operation-specific
-
-        payloads (e.g. transactionResponse).
-
-        '
-      properties:
-        messages:
-          type: object
-          properties:
-            resultCode:
-              type: string
-              enum:
-              - Ok
-              - Error
-            message:
-              type: array
-              items:
-                type: object
-                properties:
-                  code:
-                    type: string
-                  text:
-                    type: string
   securitySchemes:
     merchantAuthentication:
       type: apiKey
