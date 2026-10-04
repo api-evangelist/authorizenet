@@ -68,26 +68,6 @@ paths:
                 type: string
 components:
   schemas:
-    TransactionRequest:
-      type: object
-      properties:
-        transactionType:
-          type: string
-          enum:
-          - authCaptureTransaction
-          - authOnlyTransaction
-          - priorAuthCaptureTransaction
-          - refundTransaction
-          - voidTransaction
-        amount:
-          type: string
-          description: Decimal amount as string
-        payment:
-          type: object
-          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
-        refTransId:
-          type: string
-          description: Reference transaction ID for capture/void/refund
     AnetApiResponse:
       type: object
       description: 'Authorize.Net response envelope. Common fields include `messages` with
@@ -115,18 +95,6 @@ components:
                     type: string
                   text:
                     type: string
-    CreateTransactionRequest:
-      type: object
-      required:
-      - merchantAuthentication
-      - transactionRequest
-      properties:
-        merchantAuthentication:
-          $ref: '#/components/schemas/MerchantAuthentication'
-        refId:
-          type: string
-        transactionRequest:
-          $ref: '#/components/schemas/TransactionRequest'
     MerchantAuthentication:
       type: object
       required:
@@ -141,6 +109,18 @@ components:
           type: string
           maxLength: 16
           description: Transaction Key
+    CreateTransactionRequest:
+      type: object
+      required:
+      - merchantAuthentication
+      - transactionRequest
+      properties:
+        merchantAuthentication:
+          $ref: '#/components/schemas/MerchantAuthentication'
+        refId:
+          type: string
+        transactionRequest:
+          $ref: '#/components/schemas/TransactionRequest'
     AnetApiRequest:
       oneOf:
       - type: object
@@ -155,6 +135,26 @@ components:
           getSettledBatchListRequest, createCustomerPaymentProfileRequest, etc.
 
           '
+    TransactionRequest:
+      type: object
+      properties:
+        transactionType:
+          type: string
+          enum:
+          - authCaptureTransaction
+          - authOnlyTransaction
+          - priorAuthCaptureTransaction
+          - refundTransaction
+          - voidTransaction
+        amount:
+          type: string
+          description: Decimal amount as string
+        payment:
+          type: object
+          description: Payment instrument (creditCard, bankAccount, opaqueData, etc.)
+        refTransId:
+          type: string
+          description: Reference transaction ID for capture/void/refund
   securitySchemes:
     merchantAuthentication:
       type: apiKey
