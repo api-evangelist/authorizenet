@@ -1,0 +1,48 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://zapier.com/apps/authorizenet/integrations
+- https://zapier.com/apps/authorize-net/integrations
+- https://n8n.io/integrations/authorizenet/
+- https://composio.dev/toolkits/authorizenet
+- https://monid.ai/tools/authorizenet
+checked:
+- https://composio.dev/toolkits/authorizenet
+- https://monid.ai/tools/authorizenet
+- https://n8n.io/integrations/authorizenet/
+- https://zapier.com/apps/authorize-net/integrations
+- https://zapier.com/apps/authorizenet/integrations
+summary: null
+marketplace_apps: []
+edges:
+- partner_name: bigcommerce
+  partner: bigcommerce
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/bigcommerce/blob/main/openapi/bigcommerce-transactions-api-openapi.yml
+  contract_reference:
+    repo: bigcommerce
+    spec_file: bigcommerce-transactions-api-openapi.yml
+    value: authorizenet
+    property: Transaction.gateway
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+- partner_name: justt
+  partner: justt
+  partner_match: domain
+  type: contract
+  channel: partner-built
+  relationship: processor-connection
+  direction: partner-built
+  evidence: https://github.com/api-evangelist/justt/blob/main/openapi/justt-chargebacks-api-openapi.yml
+  contract_reference:
+    repo: justt
+    spec_file: justt-chargebacks-api-openapi.yml
+    value: authorizenet
+    property: components.schemas.PSP
+    detected_by: detect-payment-method-edges.py
+    detected: '2026-10-12'
+templates: []
