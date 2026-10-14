@@ -7,7 +7,6 @@ source:
 - https://composio.dev/toolkits/authorizenet
 - https://monid.ai/tools/authorizenet
 checked:
-- hostaway/integrations/hostaway-integration-edges.yml
 - https://composio.dev/toolkits/authorizenet
 - https://monid.ai/tools/authorizenet
 - https://n8n.io/integrations/authorizenet/
@@ -46,20 +45,4 @@ edges:
     property: components.schemas.PSP
     detected_by: detect-payment-method-edges.py
     detected: '2026-10-12'
-- partner_name: Hostaway (own)
-  partner: hostaway
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://www.hostaway.com/marketplace/authorize-net
-  mirror_of: hostaway/integrations/hostaway-integration-edges.yml
-  apps:
-  - Authorize.net
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
 templates: []
