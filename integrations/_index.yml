@@ -39,3 +39,15 @@
     detected: '2026-10-12'
   status: not-a-workflow
   arazzo: null
+- slug: authorizenet-hostaway-own
+  label: Hostaway (own)
+  partner: hostaway
+  partner_name: Hostaway (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.hostaway.com/marketplace/authorize-net
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
